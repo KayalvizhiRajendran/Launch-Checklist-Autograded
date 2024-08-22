@@ -9,7 +9,7 @@ function addDestinationInfo(
   star,
   distance,
   moons,
-  imageUrl
+  image
 ) {
   // Here is the HTML formatting for our mission target div.
   const missionTarget = document.getElementById("missionTarget");
@@ -23,7 +23,7 @@ function addDestinationInfo(
                      <li>Distance from Earth: ${distance}</li>
                      <li>Number of Moons:${moons} </li>
                  </ol>
-                 <img src="${imageUrl}">`;
+                 <img src="${image}">`;
   missionTarget.innerHTML = content;
 }
 
@@ -109,7 +109,7 @@ function pickPlanet(planets) {
     planets[selection].star,
     planets[selection].distance,
     planets[selection].moons,
-    planets[selection].imageUrl
+    planets[selection].image
   );
 }
 
