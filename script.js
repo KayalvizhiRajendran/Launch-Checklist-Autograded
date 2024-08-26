@@ -3,10 +3,8 @@
 //const { myFetch, pickPlanet, formSubmission } = require("./scriptHelper");
 
 window.addEventListener("load", function() {
-
     let form = document.querySelector("form");
-    form.addEventListener("formSubmit", function(event) {
-        alert("inside submit");
+    form.addEventListener("submit", function(event) {
     let pilotNameInput = document.querySelector("input[name=pilotName]");
     let coPilotNameInput = document.querySelector("input[name=copilotName]");
     let fuelLevelInput = document.querySelector("input[name=fuelLevel]");
@@ -16,9 +14,9 @@ window.addEventListener("load", function() {
         || cargoMassInput.value === "") {
         alert("All fields are required!");
         // stop the form submission
-        event.preventDefault();
     }
-    formSubmission(document,pilotNameInput.value,coPilotNameInput.value,fuelLevelInput.value,cargoMassInput.value );
+    event.preventDefault();
+    formSubmission(document,listedPlanets,pilotNameInput.value,coPilotNameInput.value,fuelLevelInput.value,cargoMassInput.value );
     });
 
     let listedPlanets;
@@ -29,7 +27,16 @@ window.addEventListener("load", function() {
         console.log(listedPlanets);
     }).then(function () {
         console.log(listedPlanets);
-        pickPlanet(listedPlanets)// Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
+         let selectedPlanet = pickPlanet(listedPlanets);// Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
+         addDestinationInfo(
+            document,
+            listedPlanets[selectedPlanet].name,
+            listedPlanets[selectedPlanet].diameter,
+            listedPlanets[selectedPlanet].star,
+            listedPlanets[selectedPlanet].distance,
+            listedPlanets[selectedPlanet].moons,
+            listedPlanets[selectedPlanet].image
+          );
     })
 
  });
