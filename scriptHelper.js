@@ -42,7 +42,7 @@ function validateInput(testInput) {
 }
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-  document.getElementById("faultyItems").style.visibility = "visible";
+  
   let fuelCheck = true;
   let cargoCheck = true;
   // Pilot name Check
@@ -66,6 +66,9 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         "Fuel level high enough for launch";
       fuelCheck = true;
     }
+  }else{
+    alert("Fuel Level should be a number");
+    return;
   }
 
   // Cargo check
@@ -79,8 +82,12 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         "Cargo mass low enough for launch";
       cargoCheck = true;
     }
+  }else{
+    alert("Cargo mass should be a number");
+    return;
   }
 
+  list.style.visibility = "visible";
   //Fuel and cargo check
   if (fuelCheck && cargoCheck) {
     document.getElementById("launchStatus").innerHTML =

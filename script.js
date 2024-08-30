@@ -14,9 +14,10 @@ window.addEventListener("load", function() {
         || cargoMassInput.value === "") {
         alert("All fields are required!");
         // stop the form submission
+    }else{
+        formSubmission(document,document.getElementById("faultyItems"),pilotNameInput.value,coPilotNameInput.value,fuelLevelInput.value,cargoMassInput.value );
     }
     event.preventDefault();
-    formSubmission(document,listedPlanets,pilotNameInput.value,coPilotNameInput.value,fuelLevelInput.value,cargoMassInput.value );
     });
 
     let listedPlanets;
