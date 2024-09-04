@@ -42,7 +42,18 @@ function validateInput(testInput) {
 }
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-  
+  // Check for empty fields
+  if (
+    validateInput(pilot) === "Empty" ||
+    validateInput(copilot) === "Empty" ||
+    validateInput(fuelLevel) === "Empty" ||
+    validateInput(cargoLevel) === "Empty"
+  ) {
+    alert("All fields are required!");
+    // stop the form submission
+    return;
+  }
+
   let fuelCheck = true;
   let cargoCheck = true;
   // Pilot name Check
@@ -66,7 +77,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         "Fuel level high enough for launch";
       fuelCheck = true;
     }
-  }else{
+  } else {
     alert("Fuel Level should be a number");
     return;
   }
@@ -82,7 +93,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         "Cargo mass low enough for launch";
       cargoCheck = true;
     }
-  }else{
+  } else {
     alert("Cargo mass should be a number");
     return;
   }
